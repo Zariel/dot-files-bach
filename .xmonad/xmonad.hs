@@ -29,8 +29,12 @@ import XMonad.Layout.ResizableTile
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "xmobar"
-       xmonad $ defaultConfig
+    xmonad =<< statusBar cmd pp kb conf
+    where
+        cmd = "bash -c \"tee >(xmobar -x0) | xmobar -x1\""
+        pp = customPP
+        kb  XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
+        conf = defaultConfig
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
@@ -38,7 +42,6 @@ main = do
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
               , keys = keys'
-              , logHook = logHook' h
               , layoutHook = layoutHook'
               , manageHook = manageHook'
               , handleEventHook = handleEventHook'
@@ -113,7 +116,6 @@ keys' conf @ (XConfig { XMonad.modMask = modMask }) = M.fromList $
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-    , ((modMask,               xK_b     ), sendMessage ToggleStruts)
 
     -- floating layer stuff
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
