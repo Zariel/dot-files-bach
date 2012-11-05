@@ -26,6 +26,8 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
+import Graphics.X11.ExtraTypes.XF86
+
 -------------------------------------------------------------------------------
 -- Main --
 main = do
@@ -154,8 +156,12 @@ keys' conf @ (XConfig { XMonad.modMask = modMask }) = M.fromList $
     , ((modMask .|. controlMask,  xK_l     ), spawn "mpc seek +2%")
 
     -- backlight
-    , ((modMask,                xK_w    ),  spawn "xbacklight -dec 10")
-    , ((modMask,                xK_e    ),  spawn "xbacklight -inc 10")
+    , ((0,  xF86XK_MonBrightnessUp      ),  spawn "sudo /usr/bin/backl + 250")
+    , ((0,  xF86XK_MonBrightnessDown    ),  spawn "sudo /usr/bin/backl - 250")
+
+    -- kbd leds
+    , ((0,  xF86XK_KbdBrightnessUp      ),  spawn "sudo /usr/bin/kbled + 1")
+    , ((0,  xF86XK_KbdBrightnessDown    ),  spawn "sudo /usr/bin/kbled - 1")
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
