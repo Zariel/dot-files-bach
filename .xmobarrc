@@ -1,0 +1,25 @@
+Config { font = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"
+       , bgColor = "#000000"
+       , fgColor = "#C7C7C7"
+       , position = Top
+       , lowerOnStart = True
+       -- , commands = [ Run Wireless "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 10
+       --             , Run Network "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 10
+       --             , Run BatteryP ["BAT1"] [] 30
+       --             , Run Cpu ["-L","3","-H","75","--normal","#429942","--high","#A36666"] 10
+       --             , Run Date "%a %b %d %I:%M%p" "date" 10
+       --             , Run StdinReader
+       --             ]
+       --
+       , commands = [ Run Wireless "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 50
+                    , Run CpuFreq ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 50
+                    , Run BatteryP ["BAT1"] [] 600
+                    , Run Date "%a %b %d %I:%M%p" "date" 600
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %cpufreq% %battery% <fc=#3579AB>|</fc> %wlan0wi% <fc=#3579A8>|</fc> %date%"
+       }
+
+-- vim: ft=haskell
