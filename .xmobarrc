@@ -3,23 +3,16 @@ Config { font = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"
        , fgColor = "#C7C7C7"
        , position = Top
        , lowerOnStart = True
-       -- , commands = [ Run Wireless "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 10
-       --             , Run Network "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 10
-       --             , Run BatteryP ["BAT1"] [] 30
-       --             , Run Cpu ["-L","3","-H","75","--normal","#429942","--high","#A36666"] 10
-       --             , Run Date "%a %b %d %I:%M%p" "date" 10
-       --             , Run StdinReader
-       --             ]
-       --
-       , commands = [ Run Wireless "wlan0" ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 50
-                    , Run CpuFreq ["-L","0","-H","500","--normal","#429942","--high","#A36666"] 50
-                    , Run BatteryP ["BAT1"] [] 600
+       , commands = [ Run Wireless "wlan0" [ "-L", "0", "-H", "40", "--high", "#429942" ] 50
+                    , Run CpuFreq [ "-L", "0", "-H", "1000", "--high", "#A36666", "-t", "<cpu0> | <cpu1>" ] 50
+                    , Run CoreTemp [ "-t", "<core1>C | <core2>C", "-H", "55", "--high", "#A83666" ] 50
+                    , Run BatteryP ["BAT1"] [ "-f", "ADP1/online", "-t", "<acstatus> <left>% / <timeleft>" ] 200
                     , Run Date "%a %b %d %I:%M%p" "date" 600
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %cpufreq% %battery% <fc=#3579AB>|</fc> %wlan0wi% <fc=#3579A8>|</fc> %date%"
+       , template = " %StdinReader% }{ %coretemp% <fc=#3579AB>|</fc> %cpufreq% <fc=#3579AB>|</fc> %battery% <fc=#3579AB>|</fc> %wlan0wi% <fc=#3579A8>|</fc> %date%"
        }
 
 -- vim: ft=haskell
