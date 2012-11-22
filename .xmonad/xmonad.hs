@@ -33,7 +33,7 @@ import Graphics.X11.ExtraTypes.XF86
 main = do
     xmonad =<< statusBar cmd pp kb conf
     where
-        cmd = "bash -c \"tee >(xmobar -x0) | xmobar -x1\""
+        cmd = "xmobar"
         pp = customPP
         kb  XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
         conf = defaultConfig
@@ -118,6 +118,8 @@ keys' conf @ (XConfig { XMonad.modMask = modMask }) = M.fromList $
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+	, ((modMask,			   xK_b     ), sendMessage ToggleStruts)
+
 
     -- floating layer stuff
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
