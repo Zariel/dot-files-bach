@@ -26,6 +26,9 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
+-- for fullscreen
+import XMonad.Hooks.EwmhDesktops
+
 import Graphics.X11.ExtraTypes.XF86
 
 -------------------------------------------------------------------------------
@@ -54,9 +57,9 @@ main = do
 manageHook' :: ManageHook
 -- manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
 manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
-    [ [ className =? c          --> doFloat | c <- floats]
-    , [ isFullscreen            --> (doF W.focusDown <+> doFullFloat) ]
-    ]
+    [ [ className =? "chromium"	--> doShift "web" ]
+	, [ className =? c          --> doFloat | c <- floats ]
+    , [ isFullscreen            --> (doF W.focusDown <+> doFullFloat) ] ]
     where
         floats = [ ]
 
@@ -66,7 +69,7 @@ logHook' h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 
 layoutHook' = customLayout
 
-handleEventHook' = docksEventHook
+handleEventHook' = docksEventHook <+> fullscreenEventHook
 
 -------------------------------------------------------------------------------
 -- Looks --
