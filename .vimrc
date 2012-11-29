@@ -3,6 +3,8 @@ set nocompatible
 set backspace=indent,eol,start
 set autoindent
 
+set backspace=indent,eol,start
+
 " Switch syntax highlighting on
 syntax on
 
