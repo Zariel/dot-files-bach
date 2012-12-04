@@ -56,7 +56,7 @@ main = do
 -- Hooks --
 manageHook' :: ManageHook
 -- manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
-manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
+manageHook' = manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
     [ [ className =? "chromium"	--> doShift "web" ]
 	, [ className =? c          --> doFloat | c <- floats ]
     , [ isFullscreen            --> (doF W.focusDown <+> doFullFloat) ] ]
