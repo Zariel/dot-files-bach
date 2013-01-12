@@ -5,7 +5,7 @@ Config { font = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"
        , lowerOnStart = True
        , commands = [ Run Wireless "wlan0" [ "-L", "0", "-H", "40", "--high", "#429942" ] 50
                     , Run CpuFreq [ "-L", "0", "-H", "1000", "--high", "#A36666", "-t", "<cpu0> | <cpu1>" ] 50
-                    , Run CoreTemp [ "-t", "<core1>C | <core2>C", "-H", "55", "--high", "#A83666" ] 50
+                    , Run CoreTemp [ "-t", "<core1>C <fc=#3579AB>|</fc> <core2>C", "-H", "55", "--high", "#A83666" ] 50
                     , Run BatteryP [ "BAT1" ] [ "-t", "<acstatus> <left>% / <timeleft>", "--", "-f", "ADP1/online", "-O", "AC", "-o", "BAT"] 200
                     , Run Date "%a %b %d %I:%M%p" "date" 600
                     , Run StdinReader
