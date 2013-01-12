@@ -36,7 +36,7 @@ import Graphics.X11.ExtraTypes.XF86
 main = do
     xmonad =<< statusBar cmd pp kb conf
     where
-        cmd = "xmobar"
+        cmd = "xmobar -x 0"
         pp = customPP
         kb  XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
         conf = defaultConfig
