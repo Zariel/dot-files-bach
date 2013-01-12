@@ -34,7 +34,7 @@ import Graphics.X11.ExtraTypes.XF86
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-    xmonad =<< statusBar cmd pp kb conf
+	statusBar cmd pp kb conf >>= xmonad
     where
         cmd = "xmobar -x 0"
         pp = customPP
