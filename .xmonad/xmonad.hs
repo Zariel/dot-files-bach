@@ -25,6 +25,7 @@ import XMonad.Hooks.ManageHelpers
 -- layouts
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.SimpleFloat
 
 -- for fullscreen
 import XMonad.Hooks.EwmhDesktops
@@ -57,7 +58,7 @@ main = do
 manageHook' :: ManageHook
 -- manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
 manageHook' = manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
-	[ [ className =? "chromium"	--> doShift "web" ]
+	[ [ className =? "chromium"	--> doShift "2:web" ]
 	, [ className =? c          --> doFloat | c <- floats ]
 	, [ isFullscreen            --> (doF W.focusDown <+> doFullFloat) ] ]
     where
@@ -95,7 +96,7 @@ workspaces' :: [ WorkspaceId ]
 workspaces' = [ "1:main", "2:web", "3:irc", "4:dev0", "5:dev1", "6:log", "7:sys", "8:end" ]
 
 -- layouts
-customLayout = (avoidStruts . lessBorders OnlyFloat) $ smartBorders tiled ||| smartBorders (Mirror tiled)  ||| noBorders Full
+customLayout = (avoidStruts . lessBorders OnlyFloat) $ smartBorders tiled ||| smartBorders (Mirror tiled)  ||| noBorders Full ||| simpleFloat
   where
     tiled = ResizableTall 1 (2/100) (toRational (2 / (1 + sqrt(5)::Double))) []
 
