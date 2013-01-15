@@ -60,7 +60,7 @@ manageHook' :: ManageHook
 manageHook' = manageHook defaultConfig <+> manageDocks <+> (composeAll . concat $)
 	[ [ className =? "chromium"	--> doShift "2:web" ]
 	, [ className =? c          --> doFloat | c <- floats ]
-	, [ isFullscreen            --> (doF W.focusDown <+> doFullFloat) ] ]
+	, [ isFullscreen            --> (doFullFloat) ] ]
     where
         floats = [ ]
 
