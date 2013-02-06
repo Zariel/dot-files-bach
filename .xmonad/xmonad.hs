@@ -65,9 +65,6 @@ manageHook' = manageHook defaultConfig <+> manageDocks <+> (composeAll . concat 
         floats = [ ]
 
 
-logHook' :: Handle ->  X ()
-logHook' h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
-
 layoutHook' = customLayout
 
 handleEventHook' = docksEventHook <+> fullscreenEventHook
@@ -93,7 +90,7 @@ focusedBorderColor' = "#3579A8"
 
 -- workspaces
 workspaces' :: [ WorkspaceId ]
-workspaces' = [ "1:main", "2:web", "3:irc", "4:dev0", "5:dev1", "6:log", "7:sys", "8:end" ]
+workspaces' = [ "1:web", "2:irc", "3:dev0", "4:dev1", "5:dev2", "6:log", "7:sys", "8:end" ]
 
 -- layouts
 customLayout = (avoidStruts . lessBorders OnlyFloat) $ smartBorders tiled ||| smartBorders (Mirror tiled)  ||| noBorders Full ||| simpleFloat
