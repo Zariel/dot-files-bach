@@ -5,6 +5,8 @@ set autoindent
 
 set backspace=indent,eol,start
 
+call pathogen#runtime_append_all_bundles()
+
 " Switch syntax highlighting on
 syntax on
 
