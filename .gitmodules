@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/vim-ls"]
 	path = .vim/bundle/vim-ls
 	url = git://github.com/gkz/vim-ls.git
+[submodule ".vim/bundle/vim-haskell"]
+	path = .vim/bundle/vim-haskell
+	url = git://github.com/wlangstroth/vim-haskell.git
