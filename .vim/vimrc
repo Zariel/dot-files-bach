@@ -40,5 +40,6 @@ set cindent       " stricter rules for C programs
 map Q <Nop>
 
 " golang
+let g:gofmt_command = "goimports"
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
