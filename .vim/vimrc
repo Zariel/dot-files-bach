@@ -8,14 +8,18 @@ set backspace=indent,eol,start
 call pathogen#runtime_append_all_bundles()
 
 " Switch syntax highlighting on
-syntax on
+filetype off
+filetype plugin indent off
 
-" Enable file type detection and do language-dependent indenting.
+set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
+syntax on
 
 color neverland2-darker
 
 set nofoldenable " Say no to code folding...
+
+set clipboard=unnamed
 
 command! Q q " Bind :Q to :q
 command! Qall qall 
@@ -34,3 +38,7 @@ set cindent       " stricter rules for C programs
 
 " Disable Ex mode
 map Q <Nop>
+
+" golang
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
