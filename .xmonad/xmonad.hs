@@ -159,8 +159,8 @@ keys' conf @ (XConfig { XMonad.modMask = modMask }) = M.fromList $
     , ((modMask .|. controlMask,  xK_l     ), spawn "mpc seek +2%")
 
     -- backlight
-    , ((0,  xF86XK_MonBrightnessUp      ),  spawn "sudo /usr/bin/backl + 250")
-    , ((0,  xF86XK_MonBrightnessDown    ),  spawn "sudo /usr/bin/backl - 250")
+    , ((0,  xF86XK_MonBrightnessUp      ),  spawn "sudo /usr/bin/backl + 100")
+    , ((0,  xF86XK_MonBrightnessDown    ),  spawn "sudo /usr/bin/backl - 100")
 
     -- kbd leds
     , ((0,  xF86XK_KbdBrightnessUp      ),  spawn "sudo /usr/bin/kbled + 1")
